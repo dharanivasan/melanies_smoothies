@@ -21,15 +21,13 @@ from snowflake.snowpark.functions import col
 
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
+#st.text(smoothiefroot_response.json())
 
 
 cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
-sd_sf = ""
-sd_sf = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 
 import streamlit as st
@@ -52,6 +50,8 @@ if ingredients_list:
     #st.text(ingredients_list)
     for ingredients_each in ingredients_list:
         ingredients_string += ingredients_each + ' '
+        sd_sf = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
     #st.text(ingredients_string)
 
 my_insert_stmt = """ insert into smoothies.public.orders(ingredients,NAME_ON_ORDER) values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
