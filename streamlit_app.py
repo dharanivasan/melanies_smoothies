@@ -28,7 +28,7 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('fruit_name'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
-st.dataframe(data=moothiefroot_response.json(), use_container_width=True)
+#st.dataframe(data=moothiefroot_response.json(), use_container_width=True)
 
 
 import streamlit as st
