@@ -50,6 +50,7 @@ if ingredients_list:
     #st.text(ingredients_list)
     for ingredients_each in ingredients_list:
         ingredients_string += ingredients_each + ' '
+        st.subheader(ingredients_each+ ' Nutrition information')
         sd_sf = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
     #st.text(ingredients_string)
