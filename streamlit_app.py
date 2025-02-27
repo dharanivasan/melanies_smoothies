@@ -20,7 +20,6 @@ from snowflake.snowpark.functions import col
 
 
 import requests
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 #st.text(smoothiefroot_response.json())
 
 
@@ -51,6 +50,7 @@ if ingredients_list:
     for ingredients_each in ingredients_list:
         ingredients_string += ingredients_each + ' '
         st.subheader(ingredients_each+ ' Nutrition information')
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/"+ingredients_each)
         sd_sf = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
     #st.text(ingredients_string)
